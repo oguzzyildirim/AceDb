@@ -1,0 +1,2 @@
+# AceDb
+The AceDb application uses the themoviedb.org database and Firebase Authentication product. The entire application is developed using the MVVM architecture. The app provides three main scenes: List, Search, and Detail. Movie recommendations will be based on the Roulette Wheel Selection. It will store film data and the user data required for the object array used in the Roulette Wheel Selection within the Firebase Database.
