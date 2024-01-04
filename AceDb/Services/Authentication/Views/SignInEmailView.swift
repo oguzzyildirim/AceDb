@@ -12,7 +12,7 @@ struct SignInEmailView: View {
   @Binding var isUserLogIn: Bool
 
     var body: some View {
-      VStack{
+      VStack(spacing: 20){
         TextField("Email...", text: $viewModel.email)
           .padding()
           .background(Color.gray.opacity(0.4))
@@ -45,11 +45,15 @@ struct SignInEmailView: View {
         }, label: {
           Text("Sign In")
             .font(.headline)
+            .fontWeight(.bold)
             .foregroundStyle(Color.white)
             .frame(height: 55)
             .frame(maxWidth: .infinity)
-            .background(Color.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .background(
+              RoundedRectangle(cornerRadius: 15)
+                .foregroundStyle(Color.theme.redColor)
+            )
+            .shadow(color: Color.theme.greenColor.opacity(0.50), radius: 10, x: 0.0, y: 0.0)
         })
 
         Spacer()

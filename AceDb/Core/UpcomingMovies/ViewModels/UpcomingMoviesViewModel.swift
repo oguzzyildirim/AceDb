@@ -10,13 +10,13 @@ import Foundation
 @MainActor
 final class UpcomingMoviesViewModel: ObservableObject {
   @Published var returnedUpcomingMovies: [Movie] = []
-  let randomPageNumber = Int.random(in: 1...40)
+  let randomPageNumber = Int.random(in: 1...10)
   @Published var currentPage: Int
   @Published var totalPage: Int
 
   init() {
     currentPage = randomPageNumber
-    totalPage = randomPageNumber + 10
+    totalPage = randomPageNumber + 5
   }
 
   func getUpcomingMovies() {

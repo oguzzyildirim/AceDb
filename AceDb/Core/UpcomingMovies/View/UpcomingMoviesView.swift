@@ -18,7 +18,7 @@ struct UpcomingMoviesView: View {
             NavigationLink(destination: {
               Text(movie._originalTitle)
             }, label: {
-              ReturnedMovieRowViewContentView(posterPath: movie._posterPath, movieTitle: movie._originalTitle)
+              ReturnedMovieRowViewContentView(posterPath: movie._posterPath, movieTitle: movie._originalTitle, description: movie._overview, releaseDate: movie._releaseDate)
             })
           }
 
@@ -39,12 +39,6 @@ struct UpcomingMoviesView: View {
       .onAppear {
         ImageCache.default.clearMemoryCache()
         if viewModel.currentPage < viewModel.totalPage {
-          viewModel.getUpcomingMovies()
-        }
-      }
-      .onDisappear {
-        if viewModel.currentPage < viewModel.totalPage {
-          viewModel.currentPage = viewModel.currentPage + 1
           viewModel.getUpcomingMovies()
         }
       }

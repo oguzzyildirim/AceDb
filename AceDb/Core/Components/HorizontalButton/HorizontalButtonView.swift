@@ -18,19 +18,20 @@ struct HorizontalButtonView: View {
         Text("\(buttonName)")
           .font(.headline)
           .fontWeight(.bold)
-          .foregroundStyle(Color.theme.greenColor)
-          .padding(.vertical, 6)
-          .padding(.horizontal)
+          .foregroundStyle(Color.white)
+          .frame(height: 55)
+          .frame(maxWidth: .infinity)
           .background(
             RoundedRectangle(cornerRadius: 15)
-              .foregroundStyle(Color.theme.backgroundColor)
+              .foregroundStyle(Color.theme.greenColor)
           )
-          .shadow(color: Color.theme.accentColor.opacity(0.25), radius: 10, x: 0.0, y: 0.0)
-          .padding()
+          .shadow(color: Color.theme.redColor.opacity(0.60), radius: 10, x: 0.0, y: 0.0)
+
       })
+      .padding()
     }
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-  HorizontalButtonView(buttonName: "Logout", action: {print("hello")})
+  HorizontalButtonView(buttonName: "Sign In", action: {print("hello")})
 }

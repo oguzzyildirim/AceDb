@@ -23,7 +23,7 @@ struct SearchMovieView: View {
               NavigationLink(destination: {
                 Text(movie._originalTitle)
               }, label: {
-                ReturnedMovieRowViewContentView(posterPath: movie._posterPath, movieTitle: movie._originalTitle)
+                ReturnedMovieRowViewContentView(posterPath: movie._posterPath, movieTitle: movie._originalTitle, description: movie._overview, releaseDate: movie._releaseDate)
 
               })
 
