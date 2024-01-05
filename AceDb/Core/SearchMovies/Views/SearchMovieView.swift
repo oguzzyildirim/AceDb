@@ -21,7 +21,7 @@ struct SearchMovieView: View {
           ForEach(vm.returnedMovies, id: \.id) { movies in
             ForEach(movies._results) { movie in
               NavigationLink(destination: {
-                Text(movie._originalTitle)
+                ReturnedMovieDetailView(movie: movie)
               }, label: {
                 ReturnedMovieRowViewContentView(posterPath: movie._posterPath, movieTitle: movie._originalTitle, description: movie._overview, releaseDate: movie._releaseDate)
 

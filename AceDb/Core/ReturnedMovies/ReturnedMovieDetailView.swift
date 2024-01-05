@@ -6,34 +6,37 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ReturnedMovieDetailView: View {
   @State var isBackground: Bool = true
-  @Binding var movieId: Int
+  var movie: MovieResponse
   var body: some View {
     ScrollView{
       VStack(spacing: 15){
         if isBackground {
 
-          Image("SampleBackgroundImage") // Image'ın adını değiştirmeyi unutma
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(maxWidth: .infinity, maxHeight: 300)
-            .ignoresSafeArea()
+          if let url = URL(string: APIURLs.imageUrl(posterPath: movie._backdropPath)){
+            KFImage(url) // Image'ın adını değiştirmeyi unutma
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+              .frame(maxWidth: .infinity, maxHeight: 300)
+              .ignoresSafeArea()
+          }
 
 
 
         }
 
         VStack(alignment: .leading, spacing: 10){
-          Text("Harry Potter")
+          Text(movie._originalTitle)
             .foregroundStyle(Color.theme.accentColor)
             .font(.title2)
             .fontWeight(.heavy)
             .fontDesign(.rounded)
             .multilineTextAlignment(.leading)
 
-          Text("overview")
+          Text(movie._overview)
             .foregroundStyle(Color.theme.secondaryText)
             .font(.subheadline)
             .fontWeight(.semibold)
@@ -57,7 +60,7 @@ struct ReturnedMovieDetailView: View {
                 .frame(width: 15, height: 15)
                 .foregroundStyle(Color.yellow)
 
-              Text(String(format: "%.1f", 7.5))
+              Text(String(format: "%.1f", movie._voteAverage))
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundStyle(Color.theme.accentColor)
@@ -67,17 +70,19 @@ struct ReturnedMovieDetailView: View {
 
 
 
-            Text("08-08-2023")
+            Text(movie._releaseDate)
 
 
           }
 
           Capsule()
-            .frame(width: .infinity, height: 2)
+            .frame(width: 600, height: 2)
             .foregroundStyle(Color.theme.redColor)
 
           Text("Similar Movies")
             .foregroundStyle(Color.theme.secondaryText)
+
+          SimilarMovieView(movieId: .constant(movie._id))
 
 
 
@@ -102,7 +107,7 @@ struct ReturnedMovieDetailView: View {
 }
 
 #Preview {
-  ReturnedMovieDetailView(movieId: .constant(0))
+  ReturnedMovieDetailView(movie: MovieResponse(backdropPath: nil, id: nil, genreIds: nil, originalTitle: nil, overview: nil, popularity: nil, posterPath: nil, releaseDate: nil, voteAverage: nil))
 }
 
 extension ReturnedMovieDetailView {

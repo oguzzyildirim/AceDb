@@ -43,4 +43,12 @@ final class MovieManager: ObservableObject {
         completion(response.result)
       })
   }
+
+  func similarMovies(movieId: Int, language: String, page: String, completion: @escaping (Result<Movie, AFError>) -> Void) {
+    AF.request(MovieRouter.similar(movieId: movieId, language: language, page: page, api_key: APIURLs.apiKey()))
+      .validate()
+      .responseDecodable(of: Movie.self) { (response: DataResponse<Movie, AFError>) in
+        completion(response.result)
+      }
+  }
 }

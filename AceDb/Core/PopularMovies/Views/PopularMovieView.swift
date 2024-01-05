@@ -17,7 +17,7 @@ struct PopularMovieView: View {
       List {
         ForEach(viewModel.returnedPopularMovies.flatMap(\._results), id: \.movieId) { movie in
           NavigationLink(destination: {
-            Text(movie._originalTitle)
+            ReturnedMovieDetailView(movie: movie)
           }, label: {
             ReturnedMovieRowViewContentView(posterPath: movie._posterPath, movieTitle: movie._originalTitle, description: movie._overview, releaseDate: movie._releaseDate)
           })

@@ -19,6 +19,7 @@ enum MovieRouter: URLRequestConvertible {
   case popular(language: String, page: String, api_key: String)
   case nowPlaying(language: String, page: String, api_key: String)
   case upcoming(language: String, page: String, api_key: String)
+  case similar(movieId: Int, language: String, page: String, api_key: String)
 
 
   private var baseURL: URL {
@@ -43,6 +44,8 @@ enum MovieRouter: URLRequestConvertible {
       return "/movie/now_playing"
     case .upcoming:
       return "/movie/upcoming"
+    case .similar(let movieId, _, _, _):
+      return "/movie/\(movieId)/similar"
     }
 
 
@@ -70,6 +73,11 @@ enum MovieRouter: URLRequestConvertible {
       ]
 
     case .upcoming(let language, let page, let api_key):
+      return ["language": language,
+              "page": page,
+              "api_key": api_key
+      ]
+    case .similar(_, let language, let page, let api_key):
       return ["language": language,
               "page": page,
               "api_key": api_key

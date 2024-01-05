@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APIURLs {
+public enum APIURLs {
   static func baseURL() -> String {
     return "https://api.themoviedb.org/3"
   }

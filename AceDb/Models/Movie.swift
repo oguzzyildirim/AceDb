@@ -51,6 +51,10 @@ struct MovieResponse: Codable, Identifiable {
     case voteAverage = "vote_average"
   }
 
+  var _backdropPath: String {
+    backdropPath ?? ""
+  }
+
   var _id: Int {
     id ?? Int.min
   }
